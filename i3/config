@@ -1,0 +1,362 @@
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+font pango: 	open sans 10
+# iosevka
+# icomoon feather
+# jetbrains mono
+# liberation
+# nerd font symbols
+# open sans
+# ubuntu font family
+
+# viewnior
+# xfce4 power manager settings
+
+set $super	Mod4
+set $alt	Mod1
+set $center     move position center
+
+set $browser	firefox
+set $browser2 	chromium
+set $music  	spotify
+set $term   	alacritty
+set $code       code
+set $files      pcmanfm
+
+#border_radius 10
+
+# KEY BINDINGS
+bindsym $super+Return 			exec $term
+bindsym $super+grave 			exec $term
+bindsym $super+w 			exec $browser
+bindsym $super+Shift+w 			exec $browser2
+bindsym $super+e 			exec $files
+bindsym $super+z 			exec $code
+bindsym $super+o 			exec $music
+bindsym $super+F1			exec --no-startup-id morc_menu
+bindsym $super+Shift+F1                 exec terminal -e 'bmenu'
+bindsym $super+p 			exec arandr
+#bindsym $super+Shift+p 			exec --no-startup-id pkill picom
+#bindsym $super+Ctrl+p 			exec --no-startup-id picom -b
+bindsym $super+Shift+n 			exec terminal -e 'mocp'
+
+# PRINT SCREEN
+bindsym Print 				exec --no-startup-id i3-scrot
+bindsym $super+Print --release 		exec --no-startup-id i3-scrot -w
+bindsym $super+Shift+Print --release 	exec --no-startup-id i3-scrot -s
+
+# LOCKSCREEN
+bindsym $super+9 			exec --no-startup-id blurlock
+
+# SHUT DOWN / RESTART / EXIT / ...
+bindsym $super+0 			mode "$mode_system"
+
+# RESTART / EXIT
+bindsym $super+F5 			restart
+bindsym $super+F6 			reload
+bindsym $super+Shift+e 			exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# OPENING APPLICATIONS / CLOSING WINDOWS
+bindsym $super+space 			exec --no-startup-id "dmenu_run -b  -h '25' -nf '#FFFFFF' -nb '#1e1f29' -sb '#725e97' -sf '#FFFFFF' -fn 'jetbrains mono-10' -p 'Search:'"
+bindsym $super+q 			kill
+bindsym $alt+F4 			kill
+bindsym $super+Shift+x --release 	exec --no-startup-id xkill
+
+# FLOATING
+bindsym $super+Shift+space 		floating toggle; $center
+
+# i3 BAR
+bindsym $super+m 			bar mode toggle
+#bindsym $super+m                        exec --no-startup-id pkill polybar
+#bindsym $super+Shift+m                  exec polybar
+
+# MODIFYING WINDOWS
+bindsym $super+f 			fullscreen toggle
+bindsym $super+r 			mode "resize"
+bindsym $super+b 			split h;exec notify-send 'tile horizontally'
+bindsym $super+v 			split v;exec notify-send 'tile vertically'
+bindsym $alt+q 				split toggle
+
+# CONTAINER LAYOUT
+bindsym $super+a 			layout stacking
+bindsym $super+s 		 	layout tabbed
+bindsym $super+d 			layout toggle split
+
+# CHANGE BORDERS 
+smart_borders on
+bindsym $super+n 			border normal
+bindsym $super+y 			border pixel 1
+bindsym $super+u 			border none
+
+
+
+# SOUND - do not edit if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
+exec --no-startup-id 			volumeicon
+bindsym $super+Ctrl+m 			exec terminal -e 'alsamixer'
+#exec --no-startup-id pulseaudio
+#exec --no-startup-id pa-applet
+#bindsym $super+Ctrl+m exec pavucontrol
+
+# MEDIA CONTROLS
+bindsym XF86AudioPlay 			exec playerctl play-pause
+bindsym XF86AudioPause 			exec playerctl play-pause
+bindsym XF86AudioNext 			exec playerctl next
+bindsym XF86AudioPrev 			exec playerctl previous
+
+bindsym $super+slash 			exec playerctl play-pause
+bindsym $super+comma 			exec playerctl previous
+bindsym $super+period 			exec playerctl next
+
+bindsym $super+Ctrl+slash               exec amixer sset Master toggle
+bindsym $super+Ctrl+comma               exec amixer sset Master 5%-
+bindsym $super+Ctrl+period              exec amixer sset Master 5%+
+
+bindsym $super+Shift+slash 		exec amixer set Capture toggle
+bindsym $super+Shift+comma 		exec amixer set Capture 5%-
+bindsym $super+Shift+period 		exec amixer set Capture 5%+
+
+# SCREEN BRIGHTNESS
+#bindsym XF86MonBrightnessUp            exec "xbacklight -inc 10; notify-send 'brightness up'"
+#bindsym XF86MonBrightnessDown          exec "xbacklight -dec 10; notify-send 'brightness down'"
+
+# WORKSPACES
+set $ws1 "1:"
+set $ws2 "2:"
+set $ws3 "3:"
+set $ws4 "4:"
+set $ws5 "5:"
+set $ws6 "6:"
+set $ws7 "7:"
+set $ws8 "8:"
+
+floating_modifier 			$super
+#floating_minimum_size 			400 x 225
+floating_maximum_size 			1200 x 700
+default_orientation 			auto 		## auto | vertical | horizonal
+workspace_layout 			default 	## default | tabbed | stacking
+title_align 				left 		## left | center | right
+focus_follows_mouse 			yes
+mouse_warping 				output
+popup_during_fullscreen 		smart		## smart | ignore | fullscreen
+workspace_auto_back_and_forth 		yes
+force_display_urgency_hint 		500 ms
+focus_on_window_activation 		smart 		## smart | urgent | focus | none
+
+# BORDER STYLE 
+# <normal|1pixel|pixel xx|none|pixel>
+default_border 				pixel 1
+default_floating_border 		pixel 1
+hide_edge_borders 			smart 		##none | vertical | horizontal | both | smart
+
+# switch to workspace with urgent window automatically
+for_window [urgent=latest]		focus
+
+# ASSIGN PROGRAMS TO WORKSPACES
+assign [class="firefox"] 		$ws2
+assign [class="Chromium"] 		$ws2
+assign [class="Pcmanfm"] 		$ws3
+assign [class="libreoffice"] 		$ws4
+assign [class="libreoffice-writer"] 	$ws4
+assign [class="libreoffice-calc"] 	$ws4
+assign [class="libreoffice-impress"] 	$ws4
+assign [class="Spotify"] 		$ws5
+#for_window [class="program"] 		move to workspace $ws<number>
+
+# OPEN SPECIFIC APPLICATIONS IN FLOATING MODE 
+for_window [title="alsamixer"] 			floating enable
+for_window [class="Lightdm-settings"] 		floating enable
+for_window [class="Lxappearance"] 	i	floating enable
+for_window [title="MuseScore: Play Panel"] 	floating enable
+for_window [class="Nitrogen"] 			floating enable
+for_window [class="Pamac-manager"] 		floating enable
+for_window [class="Pavucontrol"] 		floating enable
+for_window [class="qt5ct"] 			floating enable sticky enable border normal
+for_window [class="Qtconfig-qt4"] 		floating enable sticky enable border normal
+for_window [class="Xfce4-power-manager-settings"] floating enable
+for_window [class="Nm-connection-editor"] 	floating enable
+for_window [title="Library"] 			floating enable
+
+# SWITCH TO WORKSPACE
+bindsym $super+1                workspace $ws1
+bindsym $super+2                workspace $ws2
+bindsym $super+3                workspace $ws3
+bindsym $super+4                workspace $ws4
+bindsym $super+5                workspace $ws5
+bindsym $super+6                workspace $ws6
+bindsym $super+7                workspace $ws7
+bindsym $super+8                workspace $ws8
+
+bindsym $alt+Tab                workspace next
+bindsym $alt+Shift+Tab          workspace prev
+
+# MOVE TO WORKSPACE WITH FOCUSED
+bindsym $super+Shift+1          move container to workspace $ws1; workspace $ws1
+bindsym $super+Shift+2          move container to workspace $ws2; workspace $ws2
+bindsym $super+Shift+3          move container to workspace $ws3; workspace $ws3
+bindsym $super+Shift+4          move container to workspace $ws4; workspace $ws4
+bindsym $super+Shift+5          move container to workspace $ws5; workspace $ws5
+bindsym $super+Shift+6          move container to workspace $ws6; workspace $ws6
+bindsym $super+Shift+7          move container to workspace $ws7; workspace $ws7
+bindsym $super+Shift+8          move container to workspace $ws8; workspace $ws8
+
+bindsym $super+Ctrl+1 		move container to workspace $ws1
+bindsym $super+Ctrl+2 		move container to workspace $ws2
+bindsym $super+Ctrl+3 		move container to workspace $ws3
+bindsym $super+Ctrl+4 		move container to workspace $ws4
+bindsym $super+Ctrl+5 		move container to workspace $ws5
+bindsym $super+Ctrl+6 		move container to workspace $ws6
+bindsym $super+Ctrl+7 		move container to workspace $ws7
+bindsym $super+Ctrl+8 		move container to workspace $ws8
+
+# CHANGE FOCUS
+bindsym $super+h                focus left
+bindsym $super+j                focus down
+bindsym $super+k                focus up
+bindsym $super+l                focus right
+
+bindsym $super+Left             focus left
+bindsym $super+Down             focus down
+bindsym $super+Up               focus up
+bindsym $super+Right            focus right
+
+# MOVE FOCUSED WINDOW
+bindsym $super+Shift+h          move left
+bindsym $super+Shift+j          move down
+bindsym $super+Shift+k          move up
+bindsym $super+Shift+l          move right
+
+bindsym $super+Shift+Left       move left
+bindsym $super+Shift+Down       move down
+bindsym $super+Shift+Up         move up
+bindsym $super+Shift+Right      move right
+
+# START i3bar
+bar {
+	i3bar_command 			i3bar
+	status_command 			i3status -c /home/eus/.config/i3status/i3status.conf
+	position 			bottom
+	separator_symbol 		" "
+## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+#	tray_output primary
+#	tray_output eDP1
+	tray_output 			primary
+	tray_padding 			0
+		
+	bindsym button4 		nop
+	bindsym button5 		nop
+	strip_workspace_numbers 	yes
+	font pango: Jetbrains Mono 	11
+
+    colors {
+        background #1e1f29
+        statusline #FFFFFF
+        separator  #AAAAAA
+
+#                      		border  backgr. text
+        focused_workspace 	#725e97 #725e97 #FFFFFF
+        active_workspace 	#725e97 #725e97 #FDF6E3
+        inactive_workspace 	#595B5B #222D31 #EEE8D5
+        binding_mode 		#16a085 #2C2C2C #F9FAF9
+        urgent_workspace 	#16a085 #FDF6E3 #E5201D
+    }
+}
+
+# Theme colors
+#class				border	backgr	text	indictr	child_border
+client.focused			#689d69	#282828	#aaaaaa	#689d69	#689D69
+client.focused_inactive		#689d69	#282828	#aaaaaa	#689d69	#063340
+client.unfocused		#666666	#282828	#666666	#689d69	#666666
+
+# SHUT DOWN, RESTART AND LOCKING FEATURES
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# RESIZE WINDOW MODE
+mode "resize" {
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
+
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # exit resize mode: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# AUTOSTART APPLICATIONS
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id nitrogen --restore; sleep 1
+#;picom -b
+exec --no-startup-id nm-applet
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id pamac-tray
+exec --no-startup-id blueman-applet
+# exec --no-startup-id xautolock -time 10 -locker blurlock ####################################
+exec_always --no-startup-id fix_xcursor
+#exec_always --no-startup-id polybar 
+#exec --no-startup-id ~/.config/polybar/mybar/launch.sh
+
+# GAPS
+gaps inner 14
+gaps outer 0 
+smart_gaps on
+
+bindsym $super+Shift+g 			mode "$mode_gaps"
+# key bindings for gaps...
+# gaps inner|outer current|all set|plus|minus <px>
+# gaps inner all set 10
+# gaps outer all plus 5
+
+
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
