@@ -1,28 +1,22 @@
-
-/*.titlebar-buttonbox .titlebar-button { visibility: hidden !important; }
-*/
-
 /*
 @import;
 */
 
 /*
- 
+
 To change values, just search & replace said values
- 
+
 Default Nav bar height      - 40px. Change this if you've customized its size. Replace ALL 40px with your customized value.
 Default Bookmark bar height - 30px. Change this if you've customized its size. Replace ALL 30px with your customized value.
- 
+
 To customize auto hide delay - Replace ALL "5s" with Your preferred seconds delay.
- 
+
 To customize animation speed when hiding - Change ALL 300ms values. Increase milliseconds for slower animations. Decrease for faster.
 To customize animation speed when hiding - Change ALL "93%" values in @keyframes accordingly. Increase % for faster animation. Decrease for slower.
- 
+
 SEE a comment BELOW to disable auto hiding Bookmark bar.
- 
+
 */
- 
- 
 
 
 @keyframes navbar {
@@ -35,13 +29,13 @@ SEE a comment BELOW to disable auto hiding Bookmark bar.
     100% {height: 40px; max-height: 40px; min-height: 40px;}
 }
  
- @keyframes personalToolbar {
+@keyframes personalToolbar {
     0%   {height: 30px; max-height: 30px; min-height: 30px;}
     93%  {height: 30px; max-height: 30px; min-height: 30px;}
     100% {height: 0; max-height: 0; min-height: 0;}
 }
  
- @keyframes personalToolbarHover {
+@keyframes personalToolbarHover {
     100% {height: 30px; max-height: 30px; min-height: 30px;}
 }
  
@@ -71,20 +65,23 @@ SEE a comment BELOW to disable auto hiding Bookmark bar.
 
 
 
-
 /* Remove space to left of toolbar  */
 .titlebar-spacer[type="pre-tabs"] {
     display: none !important;
 }
- 
-/* Customize window action buttons ( Close, Min, Max ) */
+
+/* Remove Close, Min, Max buttons */
+.titlebar-buttonbox .titlebar-button { visibility: hidden !important; }
+
+/* Customize window action buttons ( Close, Min, Max )
 .titlebar-button {
     margin: 7px !important;
     margin-left: 0 !important;
     margin-right: 5px !important;
     border-radius: 4px !important;
-}
- 
+} */
+
+
 /* Apply dimmed background for inactive tabs 
 .tabbrowser-tab:hover>.tab-stack>.tab-background:not([selected=true], [multiselected]) {
     background-color: color-mix(in srgb, currentColor 12%, transparent);
@@ -96,10 +93,11 @@ SEE a comment BELOW to disable auto hiding Bookmark bar.
 */
 
 
- /* Make all tabs small except selected one 
+/* Make all tabs small except selected one 
 .tabbrowser-tab:not([selected=true]):not([pinned=true]) {  
     max-width: 100px !important;
-} */
+} 
+*/
 
 /* Hide tab close button */
 #TabsToolbar .close-icon {
