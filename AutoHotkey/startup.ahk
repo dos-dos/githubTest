@@ -9,3 +9,6 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #q::!F4
 
 #w::run C:\Program Files\Mozilla Firefox\firefox.exe
+#+w::run C:\Program Files\Google\Chrome\Application\chrome.exe
+
+::@@::email@gmail.com
