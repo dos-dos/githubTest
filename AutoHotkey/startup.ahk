@@ -1,5 +1,5 @@
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-; #Warn  ; Enable warnings to assist with detecting common errors.
+#Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
@@ -8,7 +8,8 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #1::^#Left
 #q::!F4
 
-#w::run C:\Program Files\Mozilla Firefox\firefox.exe
-#+w::run C:\Program Files\Google\Chrome\Application\chrome.exe
+#Return::run wt
+#w::run firefox.exe
+#+w::run chrome.exe
 
-::@@::email@gmail.com
+:*:@@::mail@gmail.com
