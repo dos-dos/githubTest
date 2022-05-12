@@ -8,6 +8,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #q::!F4
 
 #Return::run wt
+#BackSpace::run shell:RecycleBinFolder
 #w::run firefox.exe
 #+w::run chrome.exe
 
