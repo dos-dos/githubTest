@@ -9,6 +9,8 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 #Return::run wt
 #BackSpace::run shell:RecycleBinFolder
+
+#v::run "C:\Program Files\Microsoft VS Code\Code.exe"
 #w::run firefox.exe
 #+w::run chrome.exe
 
