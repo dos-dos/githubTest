@@ -1,11 +1,19 @@
-/*
-@import;
-*/
+html:root,
+window:root,
+panel,
+menupopup,
+popupnotification,
+tooltip,
+panelview,
+#main-menubar {
+  font-size: 14px !important;
+  font-family: Inter, sans-serif !important;
+  font-kerning: normal !important;
+}
+
+
 
 /*
-
-To change values, just search & replace said values
-
 Default Nav bar height      - 40px. Change this if you've customized its size. Replace ALL 40px with your customized value.
 Default Bookmark bar height - 30px. Change this if you've customized its size. Replace ALL 30px with your customized value.
 
@@ -15,7 +23,6 @@ To customize animation speed when hiding - Change ALL 300ms values. Increase mil
 To customize animation speed when hiding - Change ALL "93%" values in @keyframes accordingly. Increase % for faster animation. Decrease for slower.
 
 SEE a comment BELOW to disable auto hiding Bookmark bar.
-
 */
 
 
