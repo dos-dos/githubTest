@@ -1,5 +1,3 @@
-@import url(mica.css);
-
 html:root,
 window:root,
 panel,
@@ -8,15 +6,20 @@ popupnotification,
 tooltip,
 panelview,
 #main-menubar {
-    font-size: 16px !important;
+    font-size: 16px !important;*/
     font-family: Inter, sans-serif !important;
     font-kerning: normal !important;
+}
+
+#tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])
+> #tabbrowser-arrowscrollbox
+> .tabbrowser-tab:nth-child(1 of :not([pinned], [hidden])) {
+    margin-inline-start: unset !important;
 }
 
 .titlebar-spacer {
     display: none !important;
 }
-
 .titlebar-spacer[type="pre-tabs"] {
     display: none;
 }
@@ -26,54 +29,5 @@ panelview,
     width: 40px;
     }
 
-/* Reduce spacing between pinned and regular tabs */
-#tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab[first-visible-unpinned-tab] { margin-inline-start: initial !important; }
-
 /* Remove Close, Min, Max buttons */
 /*.titlebar-buttonbox .titlebar-button { visibility: hidden !important; }*/
-
-
-/*
-@keyframes navbar {
-    0%   {height: 40px; max-height: 40px; min-height: 40px;}
-    93%  {height: 40px; max-height: 40px; min-height: 40px;}
-    100% {height: 0; max-height: 0; min-height: 0;}
-}
- 
-@keyframes navbarHover {
-    100% {height: 40px; max-height: 40px; min-height: 40px;}
-}
- 
-@keyframes personalToolbar {
-    0%   {height: 30px; max-height: 30px; min-height: 30px;}
-    93%  {height: 30px; max-height: 30px; min-height: 30px;}
-    100% {height: 0; max-height: 0; min-height: 0;}
-}
- 
-@keyframes personalToolbarHover {
-    100% {height: 30px; max-height: 30px; min-height: 30px;}
-}
- 
-@keyframes toolbarIcon {
-    0%   {opacity: 100; display: -moz-box;}
-    93%  {opacity: 100; display: -moz-box;}
-    100% {opacity: 0; display: none;}
-}
- 
-@keyframes toolbarIconHover {
-    100% {opacity: 100; display: -moz-box;}
-}
-
-:root:not([customizing]) #nav-bar {animation: navbar 200ms forwards !important;}
-:root:not([customizing]) #navigator-toolbox:hover #nav-bar {animation: navbarHover 100ms forwards !important;}
- 
-
-/* Remove these 2 line if you want to disable auto hiding Bookmark bar. */
-/*:root:not([customizing]) #PersonalToolbar {animation: personalToolbar 200ms forwards !important;}
-:root:not([customizing]) #navigator-toolbox:hover #PersonalToolbar {animation: personalToolbarHover 100ms forwards !important;}
-
-:root:not([customizing]) #nav-bar toolbarbutton .toolbarbutton-icon {animation: toolbarIcon 200ms forwards !important;}
-:root:not([customizing]) #navigator-toolbox:hover #nav-bar toolbarbutton .toolbarbutton-icon {animation: toolbarIconHover 100ms forwards !important;}
- 
-:root:not([customizing]) #navigator-toolbox #urlbar {--urlbar-toolbar-height: 40px !important}
-
